@@ -1,0 +1,27 @@
+<!-- Store this code in 'login.html' file inside the 'templates' folder -->
+
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title> Add Sale </title>
+		<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">		
+	</head>
+	<body>
+		<div align="center">
+		<div align="center" class="border">
+			<div class="header">
+				<h1 class="word">Add Sale</h1>
+			</div></br></br>
+			<h2 class="word">
+				<form action="{{ url_for('add_sale') }}" method="post">
+				<div class="msg">{{ msg }}</div>
+					<label>Product Name: {{stock.name}}</label></br></br>
+					<input id="name" name="name" type="hidden" value="{{stock.name}}" placeholder="Enter Product Name" class="textbox"/></br></br>
+					<input id="count" name="count" type="number" min="1" max="{{stock.onhand}}" placeholder="Enter Count" class="textbox"/></br></br></br>
+					<input type="submit" class="btn" value="Save"></br></br>
+				</form>
+			</h2>
+		</div>
+		</div>
+	</body>
+</html>
