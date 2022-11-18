@@ -1,0 +1,43 @@
+<!-- Store this code in 'index.html' file inside the 'templates' folder-->
+
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title> Index </title>
+		<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">					
+	</head>
+	<body>
+		<div align="center">
+		<div align="center" class="border">
+			<div class="header">
+				<h1 class="word">Index</h1>
+			</div>
+				<h3 class="bottom">
+					Hi {{session.username}}!!
+                    <button><a href="{{ url_for('logout') }}" class="btn-sm">Logout</a></button></br></br> Welcome to the Inventory App				
+				</h3>
+            </br>{{msg}}
+            <a href="{{ url_for('add_stock') }}" class="btn">Add Stock</a></br>
+            </br>
+                <table>
+                    <tr>
+                        <!-- <th>Stock#</th> -->
+                        <th>Name</th>
+                        <th>Description</th>                        
+                        <th>OnHand</th>
+                    </tr>
+                    {% for stock in stocks %}
+                    <tr>
+                        <!-- <td></td> -->
+                        <td>{{stock.name}}</td>
+                        <td>{{stock.description}}</td>
+                        <td>{{stock.onhand}}</td>
+                        <td><button><a href="{{ url_for('add_sale', name=stock.name) }}">Add Sale</a></button></td>
+                    </tr>
+                    {% endfor %}                    
+                </table>
+                <br><br>
+		</div>
+		</div>
+	</body>
+</html>
